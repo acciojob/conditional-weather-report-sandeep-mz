@@ -16,7 +16,7 @@ const WeatherApp = ({ temperature, conditions }) => {
 
 const App = () => {
   // Weather input
-  const weatherData = { temperature: 27, conditions: 'Sunny' };
+  const weatherData = { temperature: 25, conditions: 'Sunny' };
   return (
     <div>
       <WeatherApp temperature={weatherData.temperature} conditions={weatherData.conditions} />
