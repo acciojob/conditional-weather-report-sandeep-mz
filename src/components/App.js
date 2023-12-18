@@ -1,25 +1,27 @@
-
-import React from "react";
-import './../styles/App.css';
-
-const WeatherApp = ({ temperature, conditions }) => {
-  const temperatureColor = temperature > 20 ? 'red' : 'blue';
-
-  return (
-    <div>
-      <h1>Weather App</h1>
-      <p>Temperature: <span style={{ color: temperatureColor }}>{temperature}°C</span></p>
-      <p>Conditions: {conditions}</p>
-    </div>
-  );
-};
+import React, { useState, useEffect } from 'react';
+// import './styles/App.css';
 
 const App = () => {
-  // Weather input
-  const weatherData = { temperature: 25, conditions: 'Sunny' };
+  const [weather, setWeather] = useState({ temperature: 0, conditions: '' });
+
+  useEffect(() => {
+    const simulatedWeatherData = { temperature: 25, conditions: 'Sunny' };
+    setWeather(simulatedWeatherData);
+  }, []);
+
+  const { temperature, conditions } = weather;
+
+  const temperatureStyle = {
+    color: temperature > 20 ? 'red' : 'blue',
+  };
+
   return (
-    <div>
-      <WeatherApp temperature={weatherData.temperature} conditions={weatherData.conditions} />
+    <div className="weather-app">
+      <h1>Weather App</h1>
+      <div className="weather-info">
+        <p>Temperature: <span style={temperatureStyle}>{temperature}°C</span></p>
+        <p>Conditions: {conditions}</p>
+      </div>
     </div>
   );
 };
